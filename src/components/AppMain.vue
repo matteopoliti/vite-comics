@@ -68,7 +68,7 @@ export default {
     background-color: #1C1C1C;
 
     .container {
-        padding: 50px;
+        padding-block: 50px;
 
 
         >p {

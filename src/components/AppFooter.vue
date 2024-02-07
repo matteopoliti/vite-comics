@@ -50,11 +50,20 @@ export default {
                         'DC Power Visa'
                     ]
                 }
+            ],
+            socials: [
+                "footer-facebook.png",
+                "footer-twitter.png",
+                "footer-youtube.png",
+                "footer-pinterest.png",
+                "footer-periscope.png",
             ]
         }
     },
     methods: {
-
+        getImagePath: function (img) {
+            return new URL(`../assets/img/${img}`, import.meta.url).href;
+        }
     },
 
 }
@@ -78,8 +87,18 @@ export default {
             <div class="bg_Dc">
             </div>
         </div>
-        <div>
+        <div class="contacts">
+            <div class="container">
+                <a href="#" id="sign">sign-up now!</a>
 
+                <div class="social">
+                    <span>follow us</span>
+                    <a href="#" v-for="(item, index) in socials" :key="index">
+                        <img :src="getImagePath(item)" alt="">
+                    </a>
+                </div>
+
+            </div>
         </div>
     </footer>
 </template>
@@ -104,7 +123,7 @@ export default {
 
         ul {
             list-style-type: none;
-            margin: 10px;
+            margin: 12px;
 
             h3 {
                 color: #fff;
@@ -115,7 +134,12 @@ export default {
             li {
                 color: #949494;
                 margin-bottom: 5px;
-                font-size: 16px;
+                font-size: 18px;
+                cursor: pointer;
+
+                &:hover {
+                    color: #fff;
+                }
             }
         }
     }
@@ -128,6 +152,46 @@ export default {
         width: 700px;
         position: relative;
         top: -100px;
+    }
+}
+
+.contacts {
+    background-color: #303030;
+    padding-block: 50px;
+
+    .container {
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        #sign {
+            color: #fff;
+            padding: 10px;
+            border: 2px solid #0282F9;
+            text-transform: uppercase;
+            font-size: 30px;
+
+            &:hover {
+                background-color: #0282F9;
+            }
+        }
+
+        .social {
+            display: flex;
+            gap: 20px;
+
+            span {
+                text-transform: uppercase;
+                color: #0282F9;
+                font-size: 30px;
+            }
+
+            img {
+                color: #fff;
+                width: 40px;
+            }
+        }
     }
 }
 </style>
