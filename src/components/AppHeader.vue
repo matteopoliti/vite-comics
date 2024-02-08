@@ -55,12 +55,11 @@ export default {
 </script>
 
 <template>
-    <header>
+    <header class="container">
         <figure>
             <img src="../assets/img/dc-logo.png" alt="Logo DC">
         </figure>
         <nav>
-
             <ul>
                 <li v-for="(item, index) in menuItems" :key="index">
                     <a href="#" :class="(item.status == true) ? 'active' : ''">{{ item.voci }}</a>
@@ -71,9 +70,10 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use "../styles/partials/variables" as *;
+
 header {
-    width: 60%;
-    margin: 0 auto;
+    height: 140px;
     padding: 20px;
     display: flex;
     align-items: center;
@@ -89,6 +89,25 @@ header {
         gap: 40px;
         font-size: 20px;
         font-weight: 700;
+
+
+        li {
+
+            line-height: calc(140px - 3px);
+            border-bottom: 3px solid transparent;
+
+            &:hover {
+                border-bottom: 3px solid $linkHover;
+
+                a {
+                    color: $linkHover;
+                }
+            }
+
+            a {
+                text-transform: uppercase;
+            }
+        }
     }
 
 }

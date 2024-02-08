@@ -4,52 +4,41 @@ export default {
     data() {
         return {
 
-            sections: [
-                {
-                    title: 'DC COMICS',
-                    items: [
-                        'Characters',
-                        'Comics',
-                        'Movies',
-                        'TV',
-                        'Games',
-                        'Videos',
-                        'News'
-                    ]
-                },
-                {
-                    title: 'SHOP',
-                    items: [
-                        'Shop DC',
-                        'Shop DC Collectibles'
-                    ]
-                },
-                {
-                    title: 'DC',
-                    items: [
-                        'Terms Of Use',
-                        'Privacy policy (New)',
-                        'Ad Choices',
-                        'Advertising',
-                        'Jobs',
-                        'Subscriptions',
-                        'Talent Workshops',
-                        'CPSC Certificates',
-                        'Ratings',
-                        'Shop Help',
-                        'Contact Us'
-                    ]
-                },
-                {
-                    title: 'SITES',
-                    items: [
-                        'DC',
-                        'MAD Magazine',
-                        'DC Kids',
-                        'DC Universe',
-                        'DC Power Visa'
-                    ]
-                }
+            DcComics: [
+                'Characters',
+                'Comics',
+                'Movies',
+                'TV',
+                'Games',
+                'Videos',
+                'News'
+            ],
+
+
+            Shop: [
+                'Shop DC',
+                'Shop DC Collectibles'
+            ],
+            Dc: [
+                'Terms Of Use',
+                'Privacy policy (New)',
+                'Ad Choices',
+                'Advertising',
+                'Jobs',
+                'Subscriptions',
+                'Talent Workshops',
+                'CPSC Certificates',
+                'Ratings',
+                'Shop Help',
+                'Contact Us'
+            ],
+
+            Sites: [
+                'DC',
+                'MAD Magazine',
+                'DC Kids',
+                'DC Universe',
+                'DC Power Visa'
             ],
             socials: [
                 "footer-facebook.png",
@@ -75,16 +64,32 @@ export default {
 <template>
     <footer>
         <div class="bg_image">
-            <div class="link">
-                <ul v-for="(item, index) in sections" :key="index">
-                    <h3>{{ item.title }}</h3>
-                    <li v-for="(element, elementIndex) in item.items" :key="elementIndex">
-                        {{ element }}
-                    </li>
-                </ul>
+            <div class="container link">
+                <div>
+                    <h3>DC COMICS</h3>
+                    <ul>
+                        <li v-for="(item, index) in DcComics" :key="index">{{ item }}</li>
+                    </ul>
+                    <h3>SHOP</h3>
+                    <ul>
+                        <li v-for="(item, index) in Shop" :key="index">{{ item }}</li>
+                    </ul>
+                </div>
 
-            </div>
-            <div class="bg_Dc">
+                <div>
+                    <h3>DC</h3>
+                    <ul>
+                        <li v-for="(item, index) in Dc" :key="index">{{ item }}</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>SITES</h3>
+                    <ul>
+                        <li v-for="(item, index) in Sites" :key="index">{{ item }}</li>
+                    </ul>
+                </div>
+
             </div>
         </div>
         <div class="contacts">
@@ -104,32 +109,33 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use "../styles/partials/variables" as *;
+
 .bg_image {
     background-image: url("../assets/img/footer-bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 500px;
-    display: flex;
-    gap: 400px;
-    justify-content: center;
-    overflow: hidden;
 
     .link {
-        padding: 20px;
         display: flex;
-        gap: 10px;
-        flex-direction: column;
-        flex-wrap: wrap;
+        gap: 50px;
+        background-image: url("../assets/img/dc-logo-bg.png");
+        background-size: 700px;
+        background-repeat: no-repeat;
+        background-position: right;
+        padding-block: 40px;
+
+
+
+
+        h3 {
+            color: #fff;
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
 
         ul {
             list-style-type: none;
-            margin: 12px;
-
-            h3 {
-                color: #fff;
-                font-size: 26px;
-                margin-bottom: 15px;
-            }
 
             li {
                 color: #949494;
@@ -142,17 +148,10 @@ export default {
                 }
             }
         }
+
+
     }
 
-    .bg_Dc {
-        background-image: url("../assets/img/dc-logo-bg.png");
-        background-size: cover;
-        background-position: center;
-        height: 700px;
-        width: 700px;
-        position: relative;
-        top: -100px;
-    }
 }
 
 .contacts {
@@ -168,12 +167,12 @@ export default {
         #sign {
             color: #fff;
             padding: 10px;
-            border: 2px solid #0282F9;
+            border: 2px solid $linkHover;
             text-transform: uppercase;
             font-size: 30px;
 
             &:hover {
-                background-color: #0282F9;
+                background-color: $linkHover;
             }
         }
 
@@ -183,7 +182,7 @@ export default {
 
             span {
                 text-transform: uppercase;
-                color: #0282F9;
+                color: $linkHover;
                 font-size: 30px;
             }
 
