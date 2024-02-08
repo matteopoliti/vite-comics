@@ -133,6 +133,8 @@ export default {
                         :price="item.price" :type="item.type" />
 
 
+                    <button> Load More</button>
+
                 </div>
             </div>
         </div>
@@ -184,8 +186,21 @@ export default {
 
         .comics {
             display: flex;
+            justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
+
+            button {
+
+                color: #fff;
+                background-color: $linkHover;
+                padding: 10px 80px;
+                text-transform: uppercase;
+                font-size: 18px;
+                border: none;
+                outline: none;
+                cursor: pointer;
+            }
         }
     }
 
